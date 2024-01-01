@@ -4,25 +4,76 @@
 <head>
   <title>Web Sprint 2 Challenge</title>
   <script id="challenge">
-    // 👉 CHALLENGE 1
+   // 👉 CHALLENGE 1
     function profileActivation(profile, reason) {
 
-    }
+if (profile.active) {
+profile.active = false;
+profile.reason = null;
+return "confirm status manually"
+}
+else if (profile.active) {
+profile.active = false;
+profile.reason = reason;
+return profile;
+}
+else {
+profile.active = true;
+delete profile.reason;
+return profile }
 
-    // 👉 CHALLENGE 2
-    function mineSweeper(grid, x, y) {
 
-    }
 
-    // 👉 CHALLENGE 3
-    function booleanize(obj) {
+}
 
-    }
+// 👉 CHALLENGE 2
+function mineSweeper(grid, x, y) {
 
-    // 👉 CHALLENGE 4
-    function scrub(text, forbidden) {
+if (x < 1 || x > 3 || y < 1 || y > 3) {
+return "invalid coordinates";}
 
-    }
+else if (x === 1 || y === 1) {return "🟥 💀";}
+
+else {return "🟦 🥳";}
+
+}
+
+// 👉 CHALLENGE 3
+function booleanize(obj) {
+
+for (let Idx in obj) {
+
+  if (obj[Idx] === 0) { obj[Idx] = false;}
+
+else if (obj[Idx] === 1) {obj[Idx] = true;}
+
+else if (obj[Idx] === null) {delete obj[Idx];}}
+
+for (let Idx in obj) 
+
+{{if (Idx.length >= 9) {return "shorten all prop names to 9 chars or less";}
+
+}return obj;
+
+}}
+
+// 👉 CHALLENGE 4
+function scrub(text, forbidden) {
+
+if (text === "" && forbidden.length === 0) {return forbidden;}
+
+
+let words = text.split(" ");
+let scrub = words.map((word) => {
+
+  if (forbidden.includes(word)) {
+
+  return "x".repeat(word.length);} 
+
+  else {return word;}});
+
+  return scrub.join(" ");}
+  
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
