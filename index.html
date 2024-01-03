@@ -7,16 +7,16 @@
    // 👉 CHALLENGE 1
     function profileActivation(profile, reason) {
 
+if (profile.active) 
+{if (reason) 
+{ profile.active = false;
+profile.reason = reason;
+return profile;} } 
 if (profile.active) {
 profile.active = false;
 profile.reason = null;
-return "confirm status manually"
-}
-else if (profile.active) {
-profile.active = false;
-profile.reason = reason;
-return profile;
-}
+return "confirm status manually"}
+
 else {
 profile.active = true;
 delete profile.reason;
@@ -29,33 +29,35 @@ return profile }
 // 👉 CHALLENGE 2
 function mineSweeper(grid, x, y) {
 
-if (x < 1 || x > 3 || y < 1 || y > 3) {
-return "invalid coordinates";}
+if (x < 1 || x > 3 || y < 1 || y > 3) 
+{return "invalid coordinates";}
 
-else if (x === 1 || y === 1) {return "🟥 💀";}
-
-else {return "🟦 🥳";}
+let value = grid[y - 1][x - 1];
+if (value === "🟥") 
+  { return "🟥 💀";} 
+else if (value === "🟦") 
+  {return "🟦 🥳";}
 
 }
 
 // 👉 CHALLENGE 3
 function booleanize(obj) {
 
+
 for (let Idx in obj) {
 
-  if (obj[Idx] === 0) { obj[Idx] = false;}
+if  (Idx.length >= 9) {return "shorten all prop names to 9 chars or less";}
 
-else if (obj[Idx] === 1) {obj[Idx] = true;}
+if (obj[Idx] === 0) { obj[Idx] = false;}
 
-else if (obj[Idx] === null) {delete obj[Idx];}}
+if (obj[Idx] === 1) {obj[Idx] = true;}
 
-for (let Idx in obj) 
+if (obj[Idx] === null) {delete obj[Idx];}}
 
-{{if (Idx.length >= 9) {return "shorten all prop names to 9 chars or less";}
+return obj;
 
-}return obj;
 
-}}
+}
 
 // 👉 CHALLENGE 4
 function scrub(text, forbidden) {
